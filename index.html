@@ -554,19 +554,17 @@
                     <div class="contact-info">
                         <h3>Contact Information</h3>
                         <div class="contact-item">
-                            <div class="contact-icon">📍</div>
-                            <div>
-                                <strong>Address</strong><br>
-                                Hillegomstraat 7-H<br>
-                                1058 LN Amsterdam<br>
-                                Netherlands
-                            </div>
-                        </div>
-                        <div class="contact-item">
                             <div class="contact-icon">📧</div>
                             <div>
                                 <strong>Email</strong><br>
-                                info@winsemiusgroup.com
+                                <a href="mailto:info@winsemius.eu">info@winsemius.eu</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🔗</div>
+                            <div>
+                                <strong>LinkedIn</strong><br>
+                                <a href="https://www.linkedin.com/company/winsemius-group/" target="_blank" rel="noopener">linkedin.com/company/winsemius-group</a>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -574,31 +572,14 @@
                             <div>
                                 <strong>Company</strong><br>
                                 Winsemius Group BV<br>
-                                KvK: [To be registered]
+                                KvK: 97604380
                             </div>
                         </div>
                     </div>
                     <div class="contact-form">
-                        <h3>Send us a message</h3>
-                        <form>
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="company">Company</label>
-                                <input type="text" id="company" name="company">
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" required></textarea>
-                            </div>
-                            <button type="submit" class="submit-btn">Send Message</button>
-                        </form>
+                        <h3>Ready to Connect?</h3>
+                        <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 2rem;">We're here to help you build strategic partnerships, develop networks, and drive innovation. Reach out to discover how we can support your organization's growth and success.</p>
+                        <a href="mailto:info@winsemius.eu" class="cta-button" style="display: inline-block; margin-top: 1rem;">Send us an Email</a>
                     </div>
                 </div>
             </div>
@@ -620,13 +601,14 @@
                 </div>
                 <div class="footer-section">
                     <h4>Contact</h4>
-                    <p>Hillegomstraat 7-H</p>
-                    <p>1058 LN Amsterdam</p>
-                    <p>info@winsemiusgroup.com</p>
+                    <p><a href="mailto:info@winsemius.eu">info@winsemius.eu</a></p>
+                    <p><a href="https://www.linkedin.com/company/winsemius-group/" target="_blank" rel="noopener">LinkedIn</a></p>
+                    <p>KvK: 97604380</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Winsemius Group BV. All rights reserved.</p>
+                <p>&copy; 2025 Winsemius Group BV. All rights reserved. | <a href="#" style="color: #94a3b8;">Cookie Policy</a></p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem; color: #64748b;">We do not use cookies or store any personal data on this website.</p>
             </div>
         </div>
     </footer>
@@ -640,13 +622,6 @@
                     behavior: 'smooth'
                 });
             });
-        });
-
-        // Form submission handling
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
-            this.reset();
         });
     </script>
 </body>
