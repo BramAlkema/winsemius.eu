@@ -23,7 +23,7 @@
         header {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
             color: white;
-            padding: 1rem 0;
+            padding: 2rem 0 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -52,10 +52,17 @@
             font-weight: 300;
             letter-spacing: -0.01em;
             font-family: 'Merriweather', serif;
+            margin-top: -1rem;
+        }
+        
+        .logo-text {
+            text-align: right;
+            line-height: 1.1;
+            margin-top: 2rem;
         }
         
         .logo-icon {
-            height: 35px;
+            height: 84px;
             width: auto;
         }
         
@@ -79,7 +86,7 @@
         }
         
         main {
-            margin-top: 80px;
+            margin-top: 120px;
         }
         
         .hero {
@@ -176,14 +183,14 @@
             padding: 15px;
         }
         
-        .service-icon svg {
+        .service-icon img {
             width: 30px;
             height: 30px;
-            fill: white;
+            filter: brightness(0) invert(1);
         }
         
         .service-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 400;
             margin-bottom: 1.25rem;
             color: #1a1a1a;
@@ -251,18 +258,10 @@
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 2rem;
         }
         
-        .contact-info h3 {
-            font-size: 1.75rem;
-            font-weight: 400;
-            margin-bottom: 2rem;
-            color: #1a1a1a;
-            letter-spacing: -0.01em;
-        }
-        
-        .contact-form h3 {
+        .contact-column h3 {
             font-size: 1.75rem;
             font-weight: 400;
             margin-bottom: 2rem;
@@ -273,8 +272,17 @@
         .contact-item {
             margin-bottom: 1.5rem;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 1rem;
+        }
+        
+        .contact-item a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        
+        .contact-item a:hover {
+            text-decoration: underline;
         }
         
         .contact-icon {
@@ -287,6 +295,12 @@
             justify-content: center;
             color: white;
             font-size: 1rem;
+        }
+        
+        .contact-icon img {
+            width: 20px;
+            height: 20px;
+            filter: brightness(0) invert(1);
         }
         
         .contact-form {
