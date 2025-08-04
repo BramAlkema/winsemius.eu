@@ -10,22 +10,74 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
+
+<!-- Social Meta Tags -->
+<meta property="og:title" content="Winsemius Group - Strategic Advisory & Network Development">
+<meta property="og:description" content="We help organisations build powerful partnerships, drive innovation, and create sustainable growth through strategic consulting and network development.">
+<meta property="og:image" content="https://winsemius.eu/winsemiuslogo%20opt.svg">
+<meta property="og:url" content="https://winsemius.eu">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Strategic advisory firm specialising in consultancy services, network development, and partnership facilitation. Based in Amsterdam, Netherlands.">
+
+<!-- JSON-LD Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Winsemius Group BV",
+  "url": "https://winsemius.eu",
+  "logo": "https://winsemius.eu/winsemiuslogo%20opt.svg",
+  "description": "Strategic advisory firm specialising in consultancy services, network development, and partnership facilitation.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Hillegomstraat 7-H",
+    "addressLocality": "Amsterdam",
+    "postalCode": "1058 LN",
+    "addressCountry": "NL"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "info@winsemius.eu",
+    "contactType": "customer service"
+  },
+  "foundingDate": "2024",
+  "vatID": "NL868130266B01",
+  "duns": "473500540",
+  "sameAs": [
+    "https://www.linkedin.com/company/winsemius-group/"
+  ],
+  "services": [
+    "Strategic Consulting",
+    "Partnership Development", 
+    "Network Building",
+    "Innovation Support",
+    "Project Management",
+    "Knowledge Platforms"
+  ]
+}
+</script>
 </head>
 <body>
 <header>
 <nav class="container">
 <div class="logo">
-<img src="logobrilonly.svg" alt="Winsemius Group Logo" class="logo-icon">
+<img src="logobrilonly.svg" alt="Winsemius Group Logo" class="logo-icon" loading="lazy">
                 <div class="logo-text">
                     <div>Winsemius</div>
                     <div>Group</div>
                 </div>
             </div>
-<ul class="nav-links">
-<li><a href="#home">Home</a></li>
-<li><a href="#services">Services</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#contact">Contact</a></li>
+<div class="hamburger" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
+<ul class="nav-links" id="navLinks">
+<li><a href="#home" onclick="closeMenu()">Home</a></li>
+<li><a href="#services" onclick="closeMenu()">Services</a></li>
+<li><a href="#about" onclick="closeMenu()">About</a></li>
+<li><a href="#contact" onclick="closeMenu()">Contact</a></li>
 </ul>
 </nav>
 </header>
@@ -42,32 +94,32 @@
 <h2>Our Services</h2>
 <div class="services-grid">
 <div class="service-card">
-<div class="service-icon"><img src="noun-strategic consulting-6193880.svg" alt="Strategic Consulting" /></div>
+<div class="service-icon"><img src="noun-strategic consulting-6193880.svg" alt="Strategic Consulting" loading="lazy" /></div>
 <h3>Strategic Consulting</h3>
 <p>Comprehensive strategy development, business guidance, and organisational support to help you achieve your strategic objectives.</p>
 </div>
 <div class="service-card">
-<div class="service-icon"><img src="noun-partnership-7957030.svg" alt="Partnership Development" /></div>
+<div class="service-icon"><img src="noun-partnership-7957030.svg" alt="Partnership Development" loading="lazy" /></div>
 <h3>Partnership Development</h3>
 <p>Building strategic partnerships, facilitating public-private collaborations, and creating sustainable business relationships.</p>
 </div>
 <div class="service-card">
-<div class="service-icon"><img src="noun-networking-5937160.svg" alt="Network Building" /></div>
+<div class="service-icon"><img src="noun-networking-5937160.svg" alt="Network Building" loading="lazy" /></div>
 <h3>Network Building</h3>
 <p>Creating and strengthening networks, establishing collaboration platforms, and connecting relevant stakeholders across industries.</p>
 </div>
 <div class="service-card">
-<div class="service-icon"><img src="noun-innovation support-5962588.svg" alt="Innovation Support" /></div>
+<div class="service-icon"><img src="noun-innovation support-5962588.svg" alt="Innovation Support" loading="lazy" /></div>
 <h3>Innovation Support</h3>
 <p>Facilitating innovation processes, supporting technology transfer, and enabling knowledge sharing between organisations.</p>
 </div>
 <div class="service-card">
-<div class="service-icon"><img src="noun-project-management-7914449.svg" alt="Project Management" /></div>
+<div class="service-icon"><img src="noun-project-management-7914449.svg" alt="Project Management" loading="lazy" /></div>
 <h3>Project Management</h3>
 <p>Managing complex projects, co-ordinating consortiums, and executing collaborative initiatives from concept to completion.</p>
 </div>
 <div class="service-card">
-<div class="service-icon"><img src="noun-knowledge platform-6414378.svg" alt="Knowledge Platforms" /></div>
+<div class="service-icon"><img src="noun-knowledge platform-6414378.svg" alt="Knowledge Platforms" loading="lazy" /></div>
 <h3>Knowledge Platforms</h3>
 <p>Developing digital and physical platforms for collaboration, organising events, and creating content for inspiration and growth.</p>
 </div>
@@ -112,7 +164,7 @@
 <div class="contact-column">
 <h3>Contact Information</h3>
 <div class="contact-item">
-<div class="contact-icon"><img src="noun-shipping-address-7352817.svg" alt="Address" /></div>
+<div class="contact-icon"><img src="noun-shipping-address-7352817.svg" alt="Address" loading="lazy" /></div>
 <div>
 <strong>Address</strong><br/>
                                 Hillegomstraat 7-H<br/>
@@ -121,7 +173,7 @@
                             </div>
 </div>
 <div class="contact-item">
-<div class="contact-icon"><img src="noun-company-7904593.svg" alt="Company" /></div>
+<div class="contact-icon"><img src="noun-company-7904593.svg" alt="Company" loading="lazy" /></div>
 <div>
 <strong>Company</strong><br/>
                                 Winsemius Group BV<br/>
@@ -134,21 +186,21 @@
 <div class="contact-column">
 <h3>Connect With Us</h3>
 <div class="contact-item">
-<div class="contact-icon"><img src="noun-email-5366276.svg" alt="Email" /></div>
+<div class="contact-icon"><img src="noun-email-5366276.svg" alt="Email" loading="lazy" /></div>
 <div>
 <strong>Email</strong><br/>
                                 <a href="mailto:info@winsemius.eu">info@winsemius.eu</a>
                             </div>
 </div>
 <div class="contact-item">
-<div class="contact-icon"><img src="signal.svg" alt="Signal" /></div>
+<div class="contact-icon"><img src="signal.svg" alt="Signal" loading="lazy" /></div>
 <div>
 <strong>Signal</strong><br/>
                                 <a href="https://signal.group/#CjQKIGjxYpDyXsAfW-Xj7lU4FOce1zteQL9-pEY5s5VOh6I3EhAlavSFr0XTHu3jaLrPdc5k">Signal us</a>
                             </div>
 </div>
 <div class="contact-item">
-<div class="contact-icon"><img src="linkedin.svg" alt="LinkedIn" /></div>
+<div class="contact-icon"><img src="linkedin.svg" alt="LinkedIn" loading="lazy" /></div>
 <div>
 <strong>LinkedIn</strong><br/>
                                 <a href="https://www.linkedin.com/company/winsemius-group/posts/?feedView=all">Company feed</a>
@@ -195,12 +247,27 @@
             });
         });
 
-        // Form submission handling
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
-            this.reset();
-        });
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const hamburger = document.querySelector('.hamburger');
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+        
+        function closeMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const hamburger = document.querySelector('.hamburger');
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+        
+        // Form submission handling (no form exists, so removing this)
+        // document.querySelector('form').addEventListener('submit', function(e) {
+        //     e.preventDefault();
+        //     alert('Thank you for your message! We will get back to you soon.');
+        //     this.reset();
+        // });
     </script>
 </body>
 </html>
