@@ -247,6 +247,30 @@
             });
         });
 
+        // Smart sunset-based dark mode
+        const checkSunset = (lat = 52.3676, lng = 4.9041) => {
+            fetch(`https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lng}&formatted=0`)
+                .then(r => r.json())
+                .then(data => {
+                    const sunset = new Date(data.results.sunset);
+                    if (new Date() > sunset) document.body.classList.add('dark');
+                })
+                .catch(() => {
+                    // Fallback to 6pm if API fails
+                    if (new Date().getHours() >= 18) document.body.classList.add('dark');
+                });
+        };
+
+        // Try visitor location, fallback to Amsterdam
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                pos => checkSunset(pos.coords.latitude, pos.coords.longitude),
+                () => checkSunset() // Fallback to Amsterdam
+            );
+        } else {
+            checkSunset(); // No geolocation support, use Amsterdam
+        }
+
         // Secret console message
         console.log(`░░░███░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ░█████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
