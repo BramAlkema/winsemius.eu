@@ -1338,6 +1338,24 @@ body.dark .mood-photo:hover {
   border: 1px solid #e2e8f0;
 }
 
+/* Creative Commons Badge */
+.cc-badge-svg .cc-badge-bg {
+  transition: fill 0.3s ease;
+}
+
+.cc-badge-svg .cc-badge-text {
+  transition: fill 0.3s ease;
+}
+
+/* Dark mode Creative Commons Badge */
+body.dark .cc-badge-svg .cc-badge-bg {
+  fill: #3b82f6;
+}
+
+body.dark .cc-badge-svg .cc-badge-text {
+  fill: white;
+}
+
 /* Mobile styles for poster philosophy */
 @media (max-width: 768px) {
   .poster-philosophy {
