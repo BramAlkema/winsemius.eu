@@ -590,7 +590,7 @@ body.dark .mood-photo:hover {
 
   .nav-links a {
     display: block;
-    padding: 1rem 2rem;
+    padding: 0.75rem 2rem;
     border-bottom: 1px solid rgba(255,255,255,0.1);
   }
 
