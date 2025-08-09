@@ -5,6 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Winsemius Group - Strategic Advisory &amp; Network Development</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -84,7 +85,7 @@
 <main>
 <section class="hero" id="home">
 <div class="container">
-<h1>Strategic Advisory &amp; Network Development</h1>
+<h1 class="kern track-looser lh-105">Strategic Advisory &amp; Network Development</h1>
 <p>We help organisations build powerful partnerships, drive innovation, and create sustainable growth through strategic consulting and network development.</p>
 <a class="cta-button" href="#contact">Start Your Journey</a>
 </div>
@@ -128,10 +129,10 @@
 </section>
 <section class="section section-alt" id="about">
 <div class="container">
-<h2>About Winsemius Group</h2>
+<h2 class="kern track-tight ws-tight lh-115">About Winsemius Group</h2>
 <div class="about-content">
 <div class="about-text">
-<h3>Connecting Excellence</h3>
+<h3 class="kern track-tight ws-tight">Connecting Excellence</h3>
 <p>Winsemius Group BV is a strategic advisory firm specialising in consultancy services, network development, and partnership facilitation. We support businesses, governments, knowledge institutions, and organisations in achieving their strategic goals through collaboration and innovation.</p>
 <p>Our expertise spans strategy development, financing support, consortium building, and the creation of sustainable partnerships that drive meaningful growth and impact.</p>
 <p>Based in Amsterdam, we serve clients across the Netherlands and beyond, bringing together diverse stakeholders to create powerful networks and collaborative solutions.</p>
@@ -270,6 +271,40 @@
                 document.body.classList.remove('dark');
             }
         });
+
+        // Micro-kerning for headlines
+        const KERN_MAP = new Map([
+          // Connecting Excellence
+          ["Co",-0.015],["Ex",-0.02],["ni",-0.006],["ce",-0.006],["ll",0.01],["ti",-0.006],["nc",-0.006],
+
+          // Strategic Advisory & Network Development
+          ["St",-0.006],["tr",-0.004],["te",-0.004],["gi",-0.004],["ic",-0.004],
+          ["Ad",-0.006],["vi",-0.004],["ry",-0.004],
+          ["Ne",-0.006],["et",-0.004],["tw",-0.004],["wo",-0.004],["rk",-0.004],
+          ["De",-0.006],["ve",-0.004],["el",-0.004],["op",-0.004],["pm",-0.004],["me",-0.004],["en",-0.004],["nt",-0.004],
+          [" & ",0.02] // give the ampersand a bit of air
+        ]);
+
+        function microKern(el, map) {
+          const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+          const nodes = [];
+          while (walker.nextNode()) nodes.push(walker.currentNode);
+          nodes.forEach(node => {
+            let t = node.nodeValue; if (!t || !t.trim()) return;
+            map.forEach((ls, pair) => {
+              const span = `<span style="letter-spacing:${ls}em;display:inline-block">${pair}</span>`;
+              t = t.split(pair).join(span);
+            });
+            if (t !== node.nodeValue) {
+              const frag = document.createElement("span");
+              frag.innerHTML = t;
+              node.parentNode.replaceChild(frag, node);
+            }
+          });
+        }
+        
+        // Apply micro-kerning to elements with .kern class
+        document.querySelectorAll(".kern").forEach(el => microKern(el, KERN_MAP));
 
         // Secret console message
         console.log(`░░░███░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
