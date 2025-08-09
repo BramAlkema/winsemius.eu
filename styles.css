@@ -314,27 +314,28 @@ main {
   box-shadow: 0 20px 40px rgba(0,0,0,0.12);
 }
 
-.service-number {
-  position: absolute;
-  top: -15px;
-  left: 2rem;
+.service-overview-item .service-icon {
+  width: 60px;
+  height: 60px;
   background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-  color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
-  font-size: 1.1rem;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  margin-bottom: 1.5rem;
+  padding: 15px;
+}
+
+.service-overview-item .service-icon img {
+  width: 40px;
+  height: 40px;
+  filter: brightness(0) invert(1);
 }
 
 .service-overview-item h3 {
   font-size: 1.3rem;
   margin-bottom: 1.5rem;
-  margin-top: 0.5rem;
+  margin-top: 0;
   color: #1a1a1a;
 }
 
@@ -501,26 +502,37 @@ main {
   margin: 0;
 }
 
-/* About section - Combined with For Whom and Photos */
-.about-combined {
+/* About section - Proper two-column layout */
+.about-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.about-header h2 {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.about-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: center;
+  align-items: start;
 }
 
-.about-text-section h2 {
-  text-align: left;
-  margin-bottom: 2rem;
+.about-left {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
-.about-text-section h3 {
-  font-size: 1.5rem;
-  margin: 2.5rem 0 1.5rem 0;
-  color: #1a1a1a;
+.about-right {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
-.about-text-section p {
+.about-text p {
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", "Liberation Sans", "Nimbus Sans", sans-serif;
   color: #6b7280;
   margin-bottom: 1.5rem;
@@ -554,6 +566,17 @@ main {
 
 .about-photo:nth-child(even) {
   margin-top: 1.5rem;
+}
+
+.about-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+  text-align: left;
+}
+
+.about-right .about-section h3 {
+  text-align: center;
 }
 
 /* Impact Inline (within About section) */
@@ -877,11 +900,11 @@ body.dark .case-item h3 {
   color: #10b981;
 }
 
-body.dark .about-text-section h3 {
+body.dark .about-section h3 {
   color: #f1f5f9;
 }
 
-body.dark .about-text-section p {
+body.dark .about-text p {
   color: #d1d5db;
 }
 
@@ -965,7 +988,7 @@ body.dark .mood-photo:hover {
     border-bottom: 1px solid rgba(255,255,255,0.1);
   }
 
-  .about-combined, .contact-content {
+  .about-content, .contact-content {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
@@ -994,14 +1017,6 @@ body.dark .mood-photo:hover {
 
   .service-overview-item {
     padding: 2rem;
-  }
-
-  .service-number {
-    top: -12px;
-    left: 1.5rem;
-    width: 35px;
-    height: 35px;
-    font-size: 1rem;
   }
 
   .not-this-this {
