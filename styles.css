@@ -354,58 +354,305 @@ main {
   font-weight: 600;
 }
 
-/* Not This/This Section */
-.not-this-this {
+/* Philosophy Slider Section */
+.not-this-this-slider {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: white;
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.not-this-this-slider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2' fill='white'/%3E%3C/g%3E%3C/svg%3E") repeat;
+  pointer-events: none;
+}
+
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.slider-header h2 {
+  font-family: 'Merriweather', serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #f8fafc;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.slider-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.slider-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.slider-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+
+.slider-dots {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: #3b82f6;
+  transform: scale(1.2);
+}
+
+.philosophy-slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide {
+  min-width: 100%;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  margin-top: 3rem;
+  grid-template-columns: 1fr 1px 1fr;
+  min-height: 500px;
 }
 
-.not-this, .this {
-  text-align: center;
-  padding: 2.5rem;
-  border-radius: 15px;
-  transition: transform 0.3s ease;
+.slide-content::before {
+  content: '';
+  grid-column: 2;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.2), transparent);
+  margin: 2rem 0;
 }
 
-.not-this {
-  background: #fee2e2;
-  border: 2px solid #fca5a5;
+.pane {
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
 }
 
-.this {
-  background: #dcfce7;
-  border: 2px solid #86efac;
+.not-this-pane {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.05));
 }
 
-.not-this:hover, .this:hover {
-  transform: translateY(-3px);
+.this-pane {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(22, 163, 74, 0.05));
 }
 
-.not-this h3 {
-  color: #dc2626;
+.pane-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   margin-bottom: 1rem;
 }
 
-.this h3 {
-  color: #16a34a;
-  margin-bottom: 1rem;
+.pane-icon {
+  animation: pulse 2s infinite;
 }
 
-.not-this p, .this p {
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", "Liberation Sans", "Nimbus Sans", sans-serif;
+.not-this-pane .pane-icon {
+  color: #ef4444;
+}
+
+.this-pane .pane-icon {
+  color: #22c55e;
+}
+
+.kicker {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 600;
   font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.not-this-pane .kicker {
+  color: #fca5a5;
+}
+
+.this-pane .kicker {
+  color: #86efac;
+}
+
+.headline {
+  font-family: 'Merriweather', serif;
+  font-weight: 400;
+  font-size: 2.2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #f8fafc;
+  animation: slideInUp 0.8s ease-out;
+}
+
+.merch-badge {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+  animation: fadeIn 1s ease-out 0.5s both;
+}
+
+.not-this-pane .merch-badge {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+}
+
+.this-pane .merch-badge {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: #86efac;
+}
+
+.brand-mark {
+  position: absolute;
+  bottom: 2rem;
+  left: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: "Inter", sans-serif;
   font-weight: 500;
-  line-height: 1.6;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.7);
+  z-index: 2;
 }
 
-.not-this p {
-  color: #991b1b;
+.logo-dot {
+  width: 12px;
+  height: 12px;
+  background: #3b82f6;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
 }
 
-.this p {
-  color: #166534;
+/* Animations */
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+@keyframes slideInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive for Philosophy Slider */
+@media (max-width: 768px) {
+  .not-this-this-slider {
+    padding: 4rem 0;
+  }
+
+  .slider-header {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .slider-header h2 {
+    font-size: 2rem;
+  }
+
+  .slide-content {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .slide-content::before {
+    display: none;
+  }
+
+  .pane {
+    padding: 3rem 2rem;
+  }
+
+  .headline {
+    font-size: 1.8rem;
+  }
+
+  .brand-mark {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin-top: 2rem;
+    justify-content: center;
+  }
 }
 
 /* For Whom Section */
@@ -515,21 +762,38 @@ main {
 
 .about-content {
   display: grid;
+  grid-template-rows: auto auto;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: start;
 }
 
+.about-text {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.about-photos {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.about-left .about-section {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.about-right .about-section {
+  grid-column: 2;
+  grid-row: 2;
+}
+
 .about-left {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
+  display: contents;
 }
 
 .about-right {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
+  display: contents;
 }
 
 .about-text p {
@@ -855,31 +1119,7 @@ body.dark .service-description p strong {
   color: #e2e8f0;
 }
 
-body.dark .not-this {
-  background: #7f1d1d;
-  border-color: #dc2626;
-}
-
-body.dark .this {
-  background: #14532d;
-  border-color: #16a34a;
-}
-
-body.dark .not-this h3 {
-  color: #fca5a5;
-}
-
-body.dark .this h3 {
-  color: #86efac;
-}
-
-body.dark .not-this p {
-  color: #fca5a5;
-}
-
-body.dark .this p {
-  color: #86efac;
-}
+/* Philosophy slider is already dark-themed, no additional dark mode styles needed */
 
 body.dark .impact-item {
   background: #1e293b;
@@ -990,7 +1230,28 @@ body.dark .mood-photo:hover {
 
   .about-content, .contact-content {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
     gap: 2rem;
+  }
+  
+  .about-text {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  
+  .about-photos {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  
+  .about-left .about-section {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  
+  .about-right .about-section {
+    grid-column: 1;
+    grid-row: 4;
   }
 
   .about-photos {
@@ -1019,14 +1280,7 @@ body.dark .mood-photo:hover {
     padding: 2rem;
   }
 
-  .not-this-this {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .not-this, .this {
-    padding: 2rem;
-  }
+  /* Philosophy slider responsive styles already defined above */
 
   .for-whom-chips {
     gap: 0.75rem;

@@ -200,17 +200,57 @@
 </div>
 </div>
 </section>
-<section class="section">
+<section class="section not-this-this-slider">
 <div class="container">
-<div class="not-this-this">
-<div class="not-this">
-<h3>Not this</h3>
-<p>Subsidy parades and year-long plans.</p>
+<div class="slider-header">
+<h2>Our Philosophy</h2>
+<div class="slider-controls">
+<button class="slider-btn prev" id="prevSlide">
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+<path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+<div class="slider-dots" id="sliderDots"></div>
+<button class="slider-btn next" id="nextSlide">
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+<path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
 </div>
-<div class="this">
-<h3>This</h3>
-<p>Open architectures, redundancy, and tempo.</p>
 </div>
+<div class="philosophy-slider">
+<div class="slider-track" id="sliderTrack">
+<div class="slide active">
+<div class="slide-content">
+<div class="pane not-this-pane">
+<div class="pane-header">
+<svg class="pane-icon" width="32" height="32" viewBox="0 0 32 32" fill="none">
+<circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2"/>
+<path d="M12 12l8 8M20 12l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+</svg>
+<span class="kicker">Not this</span>
+</div>
+<div class="headline" id="notThisText">Subsidy parades and year-long plans.</div>
+<div class="merch-badge">OUTDATED</div>
+</div>
+<div class="pane this-pane">
+<div class="pane-header">
+<svg class="pane-icon" width="32" height="32" viewBox="0 0 32 32" fill="none">
+<circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2"/>
+<path d="M10 16l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<span class="kicker">This</span>
+</div>
+<div class="headline" id="thisText">Open architectures, redundancy, and tempo.</div>
+<div class="merch-badge">PROVEN</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="brand-mark">
+<div class="logo-dot"></div>
+<span>WINSEMIUS</span>
 </div>
 </div>
 </section>
@@ -390,6 +430,119 @@
             hamburger.classList.remove('active');
         }
         
+        // Philosophy Slider functionality
+        const philosophyPairs = [
+            { 
+                notThis: "Subsidy parades and year-long plans.",
+                thisIs: "Open architectures, redundancy, and tempo.",
+                notBadge: "OUTDATED",
+                thisBadge: "PROVEN"
+            },
+            {
+                notThis: "Tender winnen en daarna drie jaar stilstaan.",
+                thisIs: "Validatie, opschaling en innovatie parallel laten lopen.",
+                notBadge: "SLOW",
+                thisBadge: "AGILE"
+            },
+            {
+                notThis: "ROM-tempo.",
+                thisIs: "Weeks, not years.",
+                notBadge: "LEGACY",
+                thisBadge: "MODERN"
+            },
+            {
+                notThis: "Besluiten op basis van politieke optiek.",
+                thisIs: "Governance op basis van capability en leveringszekerheid.",
+                notBadge: "POLITICAL",
+                thisBadge: "STRATEGIC"
+            },
+            {
+                notThis: "Eén leverancier en hopen dat het goed gaat.",
+                thisIs: "Redundantie vanaf dag één.",
+                notBadge: "RISKY",
+                thisBadge: "SECURE"
+            },
+            {
+                notThis: "Een project als einddoel.",
+                thisIs: "Projecten als middel voor blijvende capabilities.",
+                notBadge: "LIMITED",
+                thisBadge: "SCALABLE"
+            }
+        ];
+
+        let currentSlideIndex = 0;
+        const sliderTrack = document.getElementById('sliderTrack');
+        const sliderDots = document.getElementById('sliderDots');
+        const prevBtn = document.getElementById('prevSlide');
+        const nextBtn = document.getElementById('nextSlide');
+        const notThisText = document.getElementById('notThisText');
+        const thisText = document.getElementById('thisText');
+
+        // Create slides and dots
+        function initSlider() {
+            // Create dots
+            philosophyPairs.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = `dot ${index === 0 ? 'active' : ''}`;
+                dot.addEventListener('click', () => goToSlide(index));
+                sliderDots.appendChild(dot);
+            });
+
+            updateSlideContent();
+        }
+
+        function updateSlideContent() {
+            const current = philosophyPairs[currentSlideIndex];
+            
+            // Animate text change
+            notThisText.style.animation = 'none';
+            thisText.style.animation = 'none';
+            
+            setTimeout(() => {
+                notThisText.textContent = current.notThis;
+                thisText.textContent = current.thisIs;
+                
+                // Update badges
+                const notBadge = document.querySelector('.not-this-pane .merch-badge');
+                const thisBadge = document.querySelector('.this-pane .merch-badge');
+                notBadge.textContent = current.notBadge;
+                thisBadge.textContent = current.thisBadge;
+                
+                notThisText.style.animation = 'slideInUp 0.8s ease-out';
+                thisText.style.animation = 'slideInUp 0.8s ease-out';
+            }, 100);
+
+            // Update dots
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlideIndex);
+            });
+        }
+
+        function goToSlide(index) {
+            currentSlideIndex = index;
+            updateSlideContent();
+        }
+
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % philosophyPairs.length;
+            updateSlideContent();
+        }
+
+        function prevSlide() {
+            currentSlideIndex = (currentSlideIndex - 1 + philosophyPairs.length) % philosophyPairs.length;
+            updateSlideContent();
+        }
+
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Auto-advance slider every 6 seconds
+        setInterval(nextSlide, 6000);
+
+        // Initialize slider
+        initSlider();
+
         // Form submission handling (no form exists, so removing this)
         // document.querySelector('form').addEventListener('submit', function(e) {
         //     e.preventDefault();
