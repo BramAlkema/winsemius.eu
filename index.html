@@ -208,24 +208,26 @@
 <button class="slider-btn next" id="nextSlide">›</button>
 </div>
 <div class="poster-canvas">
-<svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" class="philosophy-poster">
+<svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg" class="philosophy-poster">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@400;700&display=swap');
 
-.poster-headline {
+.headline {
   font-family: 'Merriweather', serif;
   font-weight: 700;
-  font-size: 62px;
-  letter-spacing: -1.2px;
-  line-height: 0.85;
+  font-size: 54px;
+  kerning: auto;
+  letter-spacing: -1.1px;
+  line-height: 0.88;
   fill: #111;
 }
 
-.poster-subline {
+.subline {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  font-size: 32px;
-  letter-spacing: -0.8px;
+  font-size: 28px;
+  kerning: auto;
+  letter-spacing: -0.75px;
   line-height: 0.9;
   fill: #666;
 }
@@ -236,34 +238,33 @@
 </style>
 
 <!-- Main headline -->
-<text class="poster-headline">
-<tspan id="line1" x="50" y="100">Programme</tspan>
-<tspan id="line2" x="50" dy="52">governance</tspan>
-<tspan id="line3" x="90" dy="52">is geen</tspan>
-<tspan id="line4" x="50" dy="52">rapportageclub.</tspan>
+<text class="headline">
+<tspan id="r1" x="50" y="70">P<tspan dx="-0.8">r</tspan>ogramme</tspan>
+<tspan id="r2" x="50" dy="46">g<tspan dx="-0.5">o</tspan>vernance</tspan>
+<tspan id="r3" x="90" dy="46">i<tspan dx="0.25">s</tspan> g<tspan dx="-0.5">e</tspan>en</tspan>
+<tspan id="r4" x="50" dy="46">rapportagec<tspan dx="0.25">l</tspan>u<tspan dx="0.25">b</tspan>.</tspan>
 </text>
 
 <!-- Subline -->
-<text class="poster-subline">
-<tspan id="sub1" x="50" y="380">Het is de <tspan class="accent-text">zuurstofpomp</tspan></tspan>
-<tspan id="sub2" x="50" dy="36">van je ecosysteem.</tspan>
+<text class="subline">
+<tspan id="sub1" x="50" y="280">Het is de <tspan class="accent-text">zuurstofpomp</tspan></tspan>
+<tspan id="sub2" x="50" dy="24">van je ecosysteem.</tspan>
 </text>
 
-<!-- Brand mark -->
-<circle cx="50" cy="520" r="8" fill="#1e3a8a"/>
-<text x="75" y="528" style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 18px; letter-spacing: 0.4px; fill: #666;">WINSEMIUS</text>
+<!-- Logo glasses bottom-right -->
+<image href="logobrilonly.svg" width="60" height="24" x="820" y="360" opacity="0.85" />
 
 <!-- Animations -->
 <script><![CDATA[
-function createWobble(id, delay) {
+function wobble(id, delay) {
   const el = document.getElementById(id);
   if (!el) return;
   const anim = document.createElementNS("http://www.w3.org/2000/svg", "animateTransform");
   anim.setAttribute("attributeName", "transform");
   anim.setAttribute("type", "rotate");
-  anim.setAttribute("from", "-0.5");
-  anim.setAttribute("to", "0.5");
-  anim.setAttribute("dur", "3s");
+  anim.setAttribute("from", "-1");
+  anim.setAttribute("to", "1");
+  anim.setAttribute("dur", "2s");
   anim.setAttribute("begin", delay + "s");
   anim.setAttribute("repeatCount", "indefinite");
   anim.setAttribute("additive", "sum");
@@ -271,7 +272,7 @@ function createWobble(id, delay) {
 }
 
 setTimeout(() => {
-  ["line1","line2","line3","line4","sub1","sub2"].forEach((id,i) => createWobble(id, i*0.3));
+  ["r1","r2","r3","r4","sub1","sub2"].forEach((id,i) => wobble(id, i*0.2));
 }, 500);
 ]]></script>
 </svg>
@@ -510,39 +511,41 @@ setTimeout(() => {
             const current = posterSlides[currentSlideIndex];
             const svg = document.querySelector('.philosophy-poster');
             
-            // Clear existing content
-            const headlines = svg.querySelectorAll('.poster-headline tspan');
-            const sublines = svg.querySelectorAll('.poster-subline tspan');
+            // Update headline spans (r1, r2, r3, r4)
+            const r1 = document.getElementById('r1');
+            const r2 = document.getElementById('r2');
+            const r3 = document.getElementById('r3');
+            const r4 = document.getElementById('r4');
             
-            // Update headline
-            headlines.forEach((tspan, index) => {
-                if (current.headline[index]) {
-                    tspan.textContent = current.headline[index];
-                    tspan.setAttribute('id', `line${index + 1}`);
-                } else {
-                    tspan.textContent = '';
-                }
-            });
+            if (r1) r1.innerHTML = current.headline[0] ? current.headline[0].split('').map((char, i) => {
+                if (char === 'P' && current.headline[0].startsWith('Pr')) return `P<tspan dx="-0.8">r</tspan>`;
+                return char;
+            }).join('').replace('P<tspan dx="-0.8">r</tspan>r', 'P<tspan dx="-0.8">r</tspan>') : '';
+            
+            if (r2) r2.innerHTML = current.headline[1] ? current.headline[1].replace(/go/g, 'g<tspan dx="-0.5">o</tspan>') : '';
+            if (r3) r3.innerHTML = current.headline[2] ? current.headline[2].replace(/is/g, 'i<tspan dx="0.25">s</tspan>').replace(/ge/g, 'g<tspan dx="-0.5">e</tspan>') : '';
+            if (r4) r4.innerHTML = current.headline[3] ? current.headline[3].replace(/cl/g, 'c<tspan dx="0.25">l</tspan>').replace(/ub/g, 'u<tspan dx="0.25">b</tspan>') : '';
             
             // Update subline
-            sublines.forEach((tspan, index) => {
-                if (current.subline[index]) {
-                    // Check if this line contains the accent word
-                    if (current.subline[index].includes(current.accent)) {
-                        const parts = current.subline[index].split(current.accent);
-                        tspan.innerHTML = `${parts[0]}<tspan class="accent-text">${current.accent}</tspan>${parts[1] || ''}`;
-                    } else {
-                        tspan.textContent = current.subline[index];
-                    }
-                    tspan.setAttribute('id', `sub${index + 1}`);
+            const sub1 = document.getElementById('sub1');
+            const sub2 = document.getElementById('sub2');
+            
+            if (sub1 && current.subline[0]) {
+                if (current.subline[0].includes(current.accent)) {
+                    const parts = current.subline[0].split(current.accent);
+                    sub1.innerHTML = `${parts[0]}<tspan class="accent-text">${current.accent}</tspan>${parts[1] || ''}`;
                 } else {
-                    tspan.textContent = '';
+                    sub1.textContent = current.subline[0];
                 }
-            });
+            }
+            
+            if (sub2 && current.subline[1]) {
+                sub2.textContent = current.subline[1];
+            }
 
             // Restart animations
             setTimeout(() => {
-                ["line1","line2","line3","line4","sub1","sub2"].forEach((id,i) => {
+                ["r1","r2","r3","r4","sub1","sub2"].forEach((id,i) => {
                     const el = document.getElementById(id);
                     if (el && el.textContent.trim()) {
                         // Remove existing animations
@@ -553,10 +556,10 @@ setTimeout(() => {
                         const anim = document.createElementNS("http://www.w3.org/2000/svg", "animateTransform");
                         anim.setAttribute("attributeName", "transform");
                         anim.setAttribute("type", "rotate");
-                        anim.setAttribute("from", "-0.5");
-                        anim.setAttribute("to", "0.5");
-                        anim.setAttribute("dur", "3s");
-                        anim.setAttribute("begin", (i*0.3) + "s");
+                        anim.setAttribute("from", "-1");
+                        anim.setAttribute("to", "1");
+                        anim.setAttribute("dur", "2s");
+                        anim.setAttribute("begin", (i*0.2) + "s");
                         anim.setAttribute("repeatCount", "indefinite");
                         anim.setAttribute("additive", "sum");
                         el.appendChild(anim);
