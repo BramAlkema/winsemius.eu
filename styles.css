@@ -354,13 +354,11 @@ main {
   font-weight: 600;
 }
 
-/* Philosophy Slider Section */
-.not-this-this-slider {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  color: white;
-  padding: 6rem 0;
+/* Poster Philosophy Slider Section */
+.poster-philosophy {
+  background: #f8fafc;
+  padding: 80px 0;
   position: relative;
-  overflow: hidden;
 }
 
 .not-this-this-slider::before {
@@ -1321,5 +1319,32 @@ body.dark .mood-photo:hover {
 
   .mood-photo:nth-child(even) {
     margin-top: 0;
+  }
+}
+
+/* Additional Poster Philosophy Styles */
+.poster-canvas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.philosophy-poster {
+  max-width: 100%;
+  height: auto;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e2e8f0;
+}
+
+/* Mobile styles for poster philosophy */
+@media (max-width: 768px) {
+  .poster-philosophy {
+    padding: 40px 0;
+  }
+  
+  .philosophy-poster {
+    border-radius: 12px;
   }
 }

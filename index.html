@@ -200,57 +200,81 @@
 </div>
 </div>
 </section>
-<section class="section not-this-this-slider">
+<section class="section poster-philosophy">
 <div class="container">
-<div class="slider-header">
-<h2>Our Philosophy</h2>
 <div class="slider-controls">
-<button class="slider-btn prev" id="prevSlide">
-<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-<path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-</button>
+<button class="slider-btn prev" id="prevSlide">‹</button>
 <div class="slider-dots" id="sliderDots"></div>
-<button class="slider-btn next" id="nextSlide">
-<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-<path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<button class="slider-btn next" id="nextSlide">›</button>
+</div>
+<div class="poster-canvas">
+<svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" class="philosophy-poster">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@400;700&display=swap');
+
+.poster-headline {
+  font-family: 'Merriweather', serif;
+  font-weight: 700;
+  font-size: 62px;
+  letter-spacing: -1.2px;
+  line-height: 0.85;
+  fill: #111;
+}
+
+.poster-subline {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  letter-spacing: -0.8px;
+  line-height: 0.9;
+  fill: #666;
+}
+
+.accent-text {
+  fill: #1e3a8a;
+}
+</style>
+
+<!-- Main headline -->
+<text class="poster-headline">
+<tspan id="line1" x="50" y="100">Programme</tspan>
+<tspan id="line2" x="50" dy="52">governance</tspan>
+<tspan id="line3" x="90" dy="52">is geen</tspan>
+<tspan id="line4" x="50" dy="52">rapportageclub.</tspan>
+</text>
+
+<!-- Subline -->
+<text class="poster-subline">
+<tspan id="sub1" x="50" y="380">Het is de <tspan class="accent-text">zuurstofpomp</tspan></tspan>
+<tspan id="sub2" x="50" dy="36">van je ecosysteem.</tspan>
+</text>
+
+<!-- Brand mark -->
+<circle cx="50" cy="520" r="8" fill="#1e3a8a"/>
+<text x="75" y="528" style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 18px; letter-spacing: 0.4px; fill: #666;">WINSEMIUS</text>
+
+<!-- Animations -->
+<script><![CDATA[
+function createWobble(id, delay) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const anim = document.createElementNS("http://www.w3.org/2000/svg", "animateTransform");
+  anim.setAttribute("attributeName", "transform");
+  anim.setAttribute("type", "rotate");
+  anim.setAttribute("from", "-0.5");
+  anim.setAttribute("to", "0.5");
+  anim.setAttribute("dur", "3s");
+  anim.setAttribute("begin", delay + "s");
+  anim.setAttribute("repeatCount", "indefinite");
+  anim.setAttribute("additive", "sum");
+  el.appendChild(anim);
+}
+
+setTimeout(() => {
+  ["line1","line2","line3","line4","sub1","sub2"].forEach((id,i) => createWobble(id, i*0.3));
+}, 500);
+]]></script>
 </svg>
-</button>
-</div>
-</div>
-<div class="philosophy-slider">
-<div class="slider-track" id="sliderTrack">
-<div class="slide active">
-<div class="slide-content">
-<div class="pane not-this-pane">
-<div class="pane-header">
-<svg class="pane-icon" width="32" height="32" viewBox="0 0 32 32" fill="none">
-<circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2"/>
-<path d="M12 12l8 8M20 12l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-</svg>
-<span class="kicker">Not this</span>
-</div>
-<div class="headline" id="notThisText">Subsidy parades and year-long plans.</div>
-<div class="merch-badge">OUTDATED</div>
-</div>
-<div class="pane this-pane">
-<div class="pane-header">
-<svg class="pane-icon" width="32" height="32" viewBox="0 0 32 32" fill="none">
-<circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2"/>
-<path d="M10 16l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-<span class="kicker">This</span>
-</div>
-<div class="headline" id="thisText">Open architectures, redundancy, and tempo.</div>
-<div class="merch-badge">PROVEN</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="brand-mark">
-<div class="logo-dot"></div>
-<span>WINSEMIUS</span>
 </div>
 </div>
 </section>
@@ -430,86 +454,114 @@
             hamburger.classList.remove('active');
         }
         
-        // Philosophy Slider functionality
-        const philosophyPairs = [
-            { 
-                notThis: "Subsidy parades and year-long plans.",
-                thisIs: "Open architectures, redundancy, and tempo.",
-                notBadge: "OUTDATED",
-                thisBadge: "PROVEN"
+        // Philosophy Poster Slider functionality
+        const posterSlides = [
+            {
+                headline: ["Programme", "governance", "is geen", "rapportageclub."],
+                subline: ["Het is de zuurstofpomp", "van je ecosysteem."],
+                accent: "zuurstofpomp"
             },
             {
-                notThis: "Tender winnen en daarna drie jaar stilstaan.",
-                thisIs: "Validatie, opschaling en innovatie parallel laten lopen.",
-                notBadge: "SLOW",
-                thisBadge: "AGILE"
+                headline: ["Open", "architectuur", "is geen", "hobby."],
+                subline: ["Het is je levensverzekering", "tegen lock-in."],
+                accent: "levensverzekering"
             },
             {
-                notThis: "ROM-tempo.",
-                thisIs: "Weeks, not years.",
-                notBadge: "LEGACY",
-                thisBadge: "MODERN"
+                headline: ["Je kunt niet", "innoveren op", "jaarplannen."],
+                subline: ["Wel op weken."],
+                accent: "weken"
             },
             {
-                notThis: "Besluiten op basis van politieke optiek.",
-                thisIs: "Governance op basis van capability en leveringszekerheid.",
-                notBadge: "POLITICAL",
-                thisBadge: "STRATEGIC"
+                headline: ["Ecosystemen", "sterven niet aan", "vijanden."],
+                subline: ["Ze sterven aan", "zuurstofgebrek."],
+                accent: "zuurstofgebrek"
             },
             {
-                notThis: "Eén leverancier en hopen dat het goed gaat.",
-                thisIs: "Redundantie vanaf dag één.",
-                notBadge: "RISKY",
-                thisBadge: "SECURE"
+                headline: ["Capability", "beats", "catalogue."],
+                subline: ["Altijd."],
+                accent: "Capability"
             },
             {
-                notThis: "Een project als einddoel.",
-                thisIs: "Projecten als middel voor blijvende capabilities.",
-                notBadge: "LIMITED",
-                thisBadge: "SCALABLE"
+                headline: ["Zonder", "redundantie", "ben je geen", "ecosysteem."],
+                subline: ["Dan ben je", "een keten."],
+                accent: "redundantie"
             }
         ];
 
         let currentSlideIndex = 0;
-        const sliderTrack = document.getElementById('sliderTrack');
         const sliderDots = document.getElementById('sliderDots');
         const prevBtn = document.getElementById('prevSlide');
         const nextBtn = document.getElementById('nextSlide');
-        const notThisText = document.getElementById('notThisText');
-        const thisText = document.getElementById('thisText');
 
         // Create slides and dots
-        function initSlider() {
+        function initPosterSlider() {
             // Create dots
-            philosophyPairs.forEach((_, index) => {
+            posterSlides.forEach((_, index) => {
                 const dot = document.createElement('div');
                 dot.className = `dot ${index === 0 ? 'active' : ''}`;
-                dot.addEventListener('click', () => goToSlide(index));
+                dot.addEventListener('click', () => goToPosterSlide(index));
                 sliderDots.appendChild(dot);
             });
 
-            updateSlideContent();
+            updatePosterContent();
         }
 
-        function updateSlideContent() {
-            const current = philosophyPairs[currentSlideIndex];
+        function updatePosterContent() {
+            const current = posterSlides[currentSlideIndex];
+            const svg = document.querySelector('.philosophy-poster');
             
-            // Animate text change
-            notThisText.style.animation = 'none';
-            thisText.style.animation = 'none';
+            // Clear existing content
+            const headlines = svg.querySelectorAll('.poster-headline tspan');
+            const sublines = svg.querySelectorAll('.poster-subline tspan');
             
+            // Update headline
+            headlines.forEach((tspan, index) => {
+                if (current.headline[index]) {
+                    tspan.textContent = current.headline[index];
+                    tspan.setAttribute('id', `line${index + 1}`);
+                } else {
+                    tspan.textContent = '';
+                }
+            });
+            
+            // Update subline
+            sublines.forEach((tspan, index) => {
+                if (current.subline[index]) {
+                    // Check if this line contains the accent word
+                    if (current.subline[index].includes(current.accent)) {
+                        const parts = current.subline[index].split(current.accent);
+                        tspan.innerHTML = `${parts[0]}<tspan class="accent-text">${current.accent}</tspan>${parts[1] || ''}`;
+                    } else {
+                        tspan.textContent = current.subline[index];
+                    }
+                    tspan.setAttribute('id', `sub${index + 1}`);
+                } else {
+                    tspan.textContent = '';
+                }
+            });
+
+            // Restart animations
             setTimeout(() => {
-                notThisText.textContent = current.notThis;
-                thisText.textContent = current.thisIs;
-                
-                // Update badges
-                const notBadge = document.querySelector('.not-this-pane .merch-badge');
-                const thisBadge = document.querySelector('.this-pane .merch-badge');
-                notBadge.textContent = current.notBadge;
-                thisBadge.textContent = current.thisBadge;
-                
-                notThisText.style.animation = 'slideInUp 0.8s ease-out';
-                thisText.style.animation = 'slideInUp 0.8s ease-out';
+                ["line1","line2","line3","line4","sub1","sub2"].forEach((id,i) => {
+                    const el = document.getElementById(id);
+                    if (el && el.textContent.trim()) {
+                        // Remove existing animations
+                        const existingAnims = el.querySelectorAll('animateTransform');
+                        existingAnims.forEach(anim => anim.remove());
+                        
+                        // Add new animation
+                        const anim = document.createElementNS("http://www.w3.org/2000/svg", "animateTransform");
+                        anim.setAttribute("attributeName", "transform");
+                        anim.setAttribute("type", "rotate");
+                        anim.setAttribute("from", "-0.5");
+                        anim.setAttribute("to", "0.5");
+                        anim.setAttribute("dur", "3s");
+                        anim.setAttribute("begin", (i*0.3) + "s");
+                        anim.setAttribute("repeatCount", "indefinite");
+                        anim.setAttribute("additive", "sum");
+                        el.appendChild(anim);
+                    }
+                });
             }, 100);
 
             // Update dots
@@ -518,30 +570,30 @@
             });
         }
 
-        function goToSlide(index) {
+        function goToPosterSlide(index) {
             currentSlideIndex = index;
-            updateSlideContent();
+            updatePosterContent();
         }
 
-        function nextSlide() {
-            currentSlideIndex = (currentSlideIndex + 1) % philosophyPairs.length;
-            updateSlideContent();
+        function nextPosterSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % posterSlides.length;
+            updatePosterContent();
         }
 
-        function prevSlide() {
-            currentSlideIndex = (currentSlideIndex - 1 + philosophyPairs.length) % philosophyPairs.length;
-            updateSlideContent();
+        function prevPosterSlide() {
+            currentSlideIndex = (currentSlideIndex - 1 + posterSlides.length) % posterSlides.length;
+            updatePosterContent();
         }
 
         // Event listeners
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextPosterSlide);
+        prevBtn.addEventListener('click', prevPosterSlide);
 
-        // Auto-advance slider every 6 seconds
-        setInterval(nextSlide, 6000);
+        // Auto-advance slider every 8 seconds
+        setInterval(nextPosterSlide, 8000);
 
-        // Initialize slider
-        initSlider();
+        // Initialize poster slider
+        initPosterSlider();
 
         // Form submission handling (no form exists, so removing this)
         // document.querySelector('form').addEventListener('submit', function(e) {
