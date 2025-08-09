@@ -291,6 +291,216 @@ main {
   letter-spacing: 0.004em;
 }
 
+/* Services Overview */
+.services-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.service-overview-item {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e2e8f0;
+  position: relative;
+}
+
+.service-overview-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+.service-number {
+  position: absolute;
+  top: -15px;
+  left: 2rem;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.service-overview-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
+  color: #1a1a1a;
+}
+
+.service-description p {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", "Liberation Sans", "Nimbus Sans", sans-serif;
+  color: #6b7280;
+  line-height: 1.7;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.004em;
+}
+
+.service-description p strong {
+  color: #374151;
+  font-weight: 600;
+}
+
+/* Not This/This Section */
+.not-this-this {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.not-this, .this {
+  text-align: center;
+  padding: 2.5rem;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.not-this {
+  background: #fee2e2;
+  border: 2px solid #fca5a5;
+}
+
+.this {
+  background: #dcfce7;
+  border: 2px solid #86efac;
+}
+
+.not-this:hover, .this:hover {
+  transform: translateY(-3px);
+}
+
+.not-this h3 {
+  color: #dc2626;
+  margin-bottom: 1rem;
+}
+
+.this h3 {
+  color: #16a34a;
+  margin-bottom: 1rem;
+}
+
+.not-this p, .this p {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", "Liberation Sans", "Nimbus Sans", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.not-this p {
+  color: #991b1b;
+}
+
+.this p {
+  color: #166534;
+}
+
+/* For Whom Section */
+.for-whom-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.chip {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", "Liberation Sans", "Nimbus Sans", sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+}
+
+.chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+/* Impact Section */
+.impact-bullets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.impact-item {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+  border-left: 4px solid #3b82f6;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.impact-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+.impact-item p {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", "Liberation Sans", "Nimbus Sans", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #374151;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Cases Section */
+.cases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.case-item {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e2e8f0;
+  border-top: 4px solid #059669;
+}
+
+.case-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+.case-item h3 {
+  color: #059669;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.case-item p {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", "Liberation Sans", "Nimbus Sans", sans-serif;
+  color: #6b7280;
+  line-height: 1.7;
+  font-size: 1rem;
+  margin: 0;
+}
+
 /* About section */
 .about-content {
   display: grid;
@@ -535,6 +745,64 @@ body.dark .service-card {
   border-color: #334155;
 }
 
+body.dark .service-overview-item {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+body.dark .service-overview-item h3 {
+  color: #f1f5f9;
+}
+
+body.dark .service-description p strong {
+  color: #e2e8f0;
+}
+
+body.dark .not-this {
+  background: #7f1d1d;
+  border-color: #dc2626;
+}
+
+body.dark .this {
+  background: #14532d;
+  border-color: #16a34a;
+}
+
+body.dark .not-this h3 {
+  color: #fca5a5;
+}
+
+body.dark .this h3 {
+  color: #86efac;
+}
+
+body.dark .not-this p {
+  color: #fca5a5;
+}
+
+body.dark .this p {
+  color: #86efac;
+}
+
+body.dark .impact-item {
+  background: #1e293b;
+  border-left-color: #3b82f6;
+}
+
+body.dark .impact-item p {
+  color: #e2e8f0;
+}
+
+body.dark .case-item {
+  background: #1e293b;
+  border-color: #334155;
+  border-top-color: #059669;
+}
+
+body.dark .case-item h3 {
+  color: #10b981;
+}
+
 body.dark .stats {
   background: #1e293b;
 }
@@ -601,6 +869,59 @@ body.dark .mood-photo:hover {
 
   .services-grid {
     grid-template-columns: 1fr;
+  }
+
+  .services-overview {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .service-overview-item {
+    padding: 2rem;
+  }
+
+  .service-number {
+    top: -12px;
+    left: 1.5rem;
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .not-this-this {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .not-this, .this {
+    padding: 2rem;
+  }
+
+  .for-whom-chips {
+    gap: 0.75rem;
+  }
+
+  .chip {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .impact-bullets {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .impact-item {
+    padding: 1.5rem;
+  }
+
+  .cases {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .case-item {
+    padding: 2rem;
   }
 
   .mood-gallery {
